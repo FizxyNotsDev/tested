@@ -3,7 +3,7 @@
   "version": "v1.0.0",
   "description": "Simple and easy to use API.",
   "maintenance": {
-    "enabled": false,
+    "enabled": true,
     "gifUrl": "https://raw.githubusercontent.com/raolbyte/xyz/refs/heads/main/public/maintenance.gif"
   },
   "bannerImage": "/src/banner.jpg",
@@ -23,7 +23,7 @@
           "name": "LuminAI",
           "desc": "Talk with luminai - Advanced AI assistant",
           "path": "/ai/luminai?text=",
-          "status": "error",
+          "status": "online",
           "params": {
             "text": "Text for luminai to respond to"
           }
