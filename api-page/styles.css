@@ -43,9 +43,10 @@
   --side-nav-collapsed: 70px;
   --header-height: 70px;
 
-  /* Background values for rgba */
-  --background-color-rgb: 17, 18, 26;
+    /* Background values for rgba */
+  --background-color-rgb: 248, 249, 253;
 }
+
 
 .dark-mode {
   --primary-color: #13c0ff;
