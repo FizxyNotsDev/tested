@@ -77,40 +77,25 @@
          <h5 class="copyright-text">© 2025 Raol Api'S Corp. All rights reserved.</h5>
        </div>
 
-<!-- Sidebar Navigation -->
-<aside class="side-nav" id="sideNavigation" aria-label="Main Navigation">
-  <div class="side-nav-logo">
-    <span id="sideNavName">API</span>
-    <div id="versionHeader" class="badge-pill">v1.0</div>
-  </div>
+    <aside class="side-nav" id="sideNavigation" aria-label="Main Navigation">
+        <div class="side-nav-logo">            
+            <span id="sideNavName">API</span>
+            <div id="versionHeader" class="badge-pill"></div>
+        </div>
+        
+        <nav class="side-nav-links" aria-label="Navigation Links">
+            <a href="#Home" class="side-nav-link active" aria-current="page">
+                <i class="fas fa-home" aria-hidden="true"></i>
+                <span>Home</span>
+            </a>
+            <a href="#APIs" class="side-nav-link">
+                <i class="fas fa-plug" aria-hidden="true"></i>
+                <span>APIs</span>
+            </a>
+        </nav>
+        
+    </aside>
 
-  <!-- Menu Utama -->
-  <div class="side-nav-section">
-    <h6 class="text-uppercase fw-bold mb-2 ps-4" style="color: rgba(108,117,125,1);">Menu Utama</h6>
-    <nav class="side-nav-links ps-4" aria-label="Navigation Links">
-      <a href="#Home" class="side-nav-link active" aria-current="page">
-        <i class="fas fa-home" aria-hidden="true"></i>
-        <span>Home</span>
-      </a>
-      <a href="#APIs" class="side-nav-link">
-        <i class="fas fa-plug" aria-hidden="true"></i>
-        <span>APIs</span>
-      </a>
-    </nav>
-  </div>
-
-  <!-- Resources -->
-  <div class="side-nav-section mt-4">
-    <h6 class="text-uppercase fw-bold mb-2 ps-4" style="color: rgba(108,117,125,1);">Resources</h6>
-    <nav class="side-nav-links ps-4" aria-label="Resources Links">
-      <a href="https://github.com/FizxyNotsDev/FieX-API-s" target="_blank" class="side-nav-link">
-        <i class="fab fa-github" aria-hidden="true"></i>
-        <span>GitHub</span>
-      </a>
-    </nav>
-  </div>
-</aside>
-    
     <div class="main-wrapper">
         <header class="main-header" role="banner">
             <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="sideNavigation">
@@ -134,13 +119,6 @@
                 </button>
             </div>
         </header>
-
-        <!-- MODIFIED: Tambah Status API di bawah header -->
-        <div id="apiStatusBox" class="alert alert-secondary d-flex align-items-center mb-3" style="max-width: 420px; gap: 8px; margin: 20px auto 0 24px;">
-            <i id="apiStatusIcon" class="fas fa-circle-notch fa-spin text-secondary"></i>
-            <span id="apiStatusText">Checking API status...</span>
-        </div>
-        <!-- END MODIFIED -->
         
         <main id="mainContent">
             <section id="Home" class="hero-section" aria-labelledby="heroHeading">
@@ -167,8 +145,111 @@
                 <h2 id="apiSectionTitle" class="section-title">Available APIs</h2>
                 <p class="section-description">Explore our collection of powerful and easy-to-use APIs.</p>
                 
-                <div class="tab-content" id="apiContent">
-                    </div>
+                <!-- TAB UI & API CARD START -->
+                <div class="tabs mb-4" id="apiTabs">
+                    <button class="tab-btn active" data-tab="all">All APIs <span class="badge bg-secondary" id="count-all">0</span></button>
+                    <button class="tab-btn" data-tab="openai">OpenAI & AI Models <span class="badge bg-secondary" id="count-openai">0</span></button>
+                    <button class="tab-btn" data-tab="other">Other APIs <span class="badge bg-secondary" id="count-other">0</span></button>
+                </div>
+                <div id="tab-content"></div>
+                <style>
+                    .tabs { margin-bottom: 1rem; }
+                    .tab-btn {
+                        background: none; border: none; color: #b2bbce; font-weight: 600;
+                        font-size: 1rem; padding: 0.6rem 1.5rem; cursor: pointer; border-radius: 1.5rem;
+                        margin-right: 0.5rem; transition: background .2s, color .2s;
+                    }
+                    .tab-btn.active, .tab-btn:focus { background: #282b36; color: #fff; }
+                    .api-card {
+                        background: #232535; border-radius: 1.25rem; margin-bottom: 1.25rem; padding: 1.25rem 1.5rem;
+                        box-shadow: 0 4px 12px 0 rgba(0,0,0,.16); border: none; color: #fff;
+                    }
+                    .api-card .status {
+                        float: right; font-size: .95rem; color: #1ee0ac; font-weight: 600;
+                    }
+                    .api-card .api-title { font-size: 1.2rem; font-weight: 700; margin-bottom: .25rem; }
+                    .api-card .api-desc { font-size: 1rem; margin-bottom: .75rem; color: #b2bbce; }
+                    .api-card .api-actions button {
+                        background: #7a7dfd; border: none; color: #fff; border-radius: 1.25rem;
+                        padding: 0.4rem 1.1rem; margin-left: 0.3rem; font-weight: 600; transition: background .2s;
+                    }
+                    .api-card .api-actions button:active, .api-card .api-actions button:focus { background: #5355ce; }
+                </style>
+                <script>
+                    // Data API (edit/tambah sesuai kebutuhan)
+                    const apis = [
+                        {
+                            id: 1,
+                            title: "OpenAI Llama3",
+                            desc: "Chat dengan model Llama3-8B-8192 yang dihosting melalui Groq. Cepat dan cerdas.",
+                            status: "Ready",
+                            cat: "openai"
+                        },
+                        {
+                            id: 2,
+                            title: "Multi-Model Chatbot",
+                            desc: "Mengakses beberapa model AI (chatgpt4, metaai, deepseek) melalui satu endpoint.",
+                            status: "Ready",
+                            cat: "openai"
+                        },
+                        {
+                            id: 3,
+                            title: "Deepseek",
+                            desc: "Endpoint khusus untuk berinteraksi dengan model AI Deepseek.",
+                            status: "Ready",
+                            cat: "openai"
+                        },
+                        {
+                            id: 4,
+                            title: "Random Image",
+                            desc: "API untuk mengambil gambar-gambar acak dari berbagai kategori.",
+                            status: "Ready",
+                            cat: "other"
+                        }
+                    ];
+
+                    function renderTab(tab) {
+                        let filtered = apis;
+                        if (tab === 'openai')
+                            filtered = apis.filter(api => api.cat === 'openai');
+                        else if (tab === 'other')
+                            filtered = apis.filter(api => api.cat === 'other');
+                        let html = '';
+                        filtered.forEach(api => {
+                            html += `
+                                <div class="api-card">
+                                    <span class="status">${api.status}</span>
+                                    <div class="api-title">${api.title}</div>
+                                    <div class="api-desc">${api.desc}</div>
+                                    <div class="api-actions">
+                                        <button>GET</button>
+                                        <button>Try it</button>
+                                    </div>
+                                </div>
+                            `;
+                        });
+                        document.getElementById('tab-content').innerHTML = html;
+                    }
+                    // Update badge count
+                    function updateCount() {
+                        document.getElementById('count-all').innerText = apis.length;
+                        document.getElementById('count-openai').innerText = apis.filter(a=>a.cat==='openai').length;
+                        document.getElementById('count-other').innerText = apis.filter(a=>a.cat==='other').length;
+                    }
+                    document.addEventListener("DOMContentLoaded", function() {
+                        document.querySelectorAll('.tab-btn').forEach(btn => {
+                            btn.addEventListener('click', function() {
+                                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                                this.classList.add('active');
+                                renderTab(this.dataset.tab);
+                            });
+                        });
+                        updateCount();
+                        renderTab('all');
+                    });
+                </script>
+                <!-- TAB UI & API CARD END -->
+
             </section>
         </main>
         
@@ -265,38 +346,40 @@
         </div>
     </div>
 
+    <!-- JAM UI KEREN -->
+    <div id="jamContainer" style="position:fixed;top:20px;right:32px;z-index:9999;">
+      <div id="jamDigital"
+           style="background:rgba(44,48,69,0.94);border-radius:1.2rem;padding:0.6rem 1.6rem;box-shadow:0 4px 14px #0003;display:flex;align-items:center;gap:0.8rem;font-family:'Outfit',sans-serif;">
+        <svg width="20" height="20" fill="none">
+          <circle cx="10" cy="10" r="9" stroke="#7a7dfd" stroke-width="2"/>
+          <circle id="jamDetik" cx="10" cy="10" r="7" stroke="#1ee0ac" stroke-width="2" stroke-dasharray="44" stroke-dashoffset="0" />
+          <circle id="jamMenit" cx="10" cy="10" r="5" stroke="#b2bbce" stroke-width="2" stroke-dasharray="31.4" stroke-dashoffset="0" />
+          <circle id="jamJam" cx="10" cy="10" r="3" stroke="#fff" stroke-width="2" stroke-dasharray="18.8" stroke-dashoffset="0" />
+        </svg>
+        <span id="jamText"
+              style="font-size:1.3rem;font-weight:700;letter-spacing:0.08em;color:#fff;text-shadow:0 2px 16px #0004;">
+          00:00:00
+        </span>
+      </div>
+    </div>
+    <script>
+    function pad(n){return n<10?'0'+n:n;}
+    function animateJam(){
+      const now=new Date();
+      let h=now.getHours(),m=now.getMinutes(),s=now.getSeconds();
+      document.getElementById('jamText').textContent = `${pad(h)}:${pad(m)}:${pad(s)}`;
+      // SVG Animate
+      document.getElementById('jamDetik').style.strokeDashoffset = 44 - s/60*44;
+      document.getElementById('jamMenit').style.strokeDashoffset = 31.4 - m/60*31.4;
+      document.getElementById('jamJam').style.strokeDashoffset = 18.8 - (h%12)/12*18.8;
+      requestAnimationFrame(animateJam);
+    }
+    animateJam();
+    </script>
+    <!-- END JAM UI KEREN -->
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/script.js"></script>
-    <!-- MODIFIED: Script Status API -->
-    <script>
-      // MODIFIED: API status checker dengan total request
-      async function fetchApiStatus() {
-        const icon = document.getElementById('apiStatusIcon');
-        const text = document.getElementById('apiStatusText');
-        try {
-          const res = await fetch('/status');
-          if (!res.ok) throw new Error('API down');
-          const data = await res.json();
-          if (data.status === "online" || data.status === "UP" || data.status === true) {
-            let statusStr = `API Online • Uptime: ${data.uptime || "-"} • v${data.version || ""}`;
-            if (typeof data.totalRequest !== "undefined") {
-              statusStr += ` • Total Request: ${data.totalRequest}`;
-            }
-            icon.className = "fas fa-circle text-success";
-            text.textContent = statusStr;
-          } else {
-            icon.className = "fas fa-circle text-danger";
-            text.textContent = "API Offline";
-          }
-        } catch (e) {
-          icon.className = "fas fa-circle text-danger";
-          text.textContent = "API Offline";
-        }
-      }
-      fetchApiStatus();
-      setInterval(fetchApiStatus, 10000); // cek tiap 10 detik
-    </script>
-    <!-- END MODIFIED -->
 </body>
 </html>
