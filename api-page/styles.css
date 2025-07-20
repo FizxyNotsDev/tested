@@ -1,25 +1,24 @@
 :root {
-  /* Color Palette - FieX Logo Gradient Theme */
-  --primary-color: #13c0ff;         /* FieX blue */
-  --primary-hover: #6f38fd;         /* FieX purple */
-  --secondary-color: #6f38fd;       /* FieX purple */
-  --accent-color: #fc2eb4;          /* FieX pink */
-  --success-color: #13c0ff;         /* Use blue for status */
-  --error-color: #fc2eb4;           /* Use pink for error */
+  /* Color Palette - Purple Gradient Theme */
+  --primary-color: #6c5ce7;
+  --primary-hover: #5649d1;
+  --secondary-color: #a29bfe;
+  --accent-color: #00cec9;
+  --success-color: #00b894;
+  --error-color: #ff7675;
   --warning-color: #fdcb6e;
 
-  /* Light Mode (fix: gunakan warna terang) */
-  --background-color: #f9fbff;          /* Putih kebiruan */
-  --card-background: #ffffff;           /* Putih */
-  --text-color: #2c3e50;                /* Abu tua */
+  /* Light Mode */
+  --background-color: #f9fbff;
+  --card-background: #ffffff;
+  --text-color: #2c3e50;
   --text-muted: #7f8c8d;
-  --border-color: rgba(19, 192, 255, 0.08);
-  --highlight-color: rgba(19, 192, 255, 0.08);
-  --shadow: 0 4px 12px rgba(19, 192, 255, 0.08);
-  --hover-shadow: 0 6px 20px rgba(19, 192, 255, 0.12);
-  --card-shadow: 0 2px 8px rgba(19, 192, 255, 0.05);
+  --border-color: rgba(0, 0, 0, 0.06);
+  --highlight-color: rgba(127, 97, 255, 0.1);
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --hover-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   --background-color-rgb: 249, 251, 255;
-}
 
   /* UI Elements */
   --border-radius-sm: 8px;
@@ -45,27 +44,25 @@
   --header-height: 70px;
 
   /* Background values for rgba */
-  --background-color-rgb: 17, 18, 26;
+  --background-color-rgb: 248, 249, 253;
 }
 
 .dark-mode {
-  --primary-color: #13c0ff;
-  --primary-hover: #6f38fd;
-  --secondary-color: #6f38fd;
-  --accent-color: #fc2eb4;
-  --background-color: #07080f;
-  --card-background: #181929;
-  --text-color: #f5f6fa;
-  --text-muted: #7f8c8d;
-  --border-color: rgba(19, 192, 255, 0.12);
-  --highlight-color: rgba(19, 192, 255, 0.16);
-  --shadow: 0 10px 25px rgba(19, 192, 255, 0.09);
-  --hover-shadow: 0 15px 35px rgba(111, 56, 253, 0.15);
-  --card-shadow: 0 4px 12px rgba(19, 192, 255, 0.13);
-  --background-color-rgb: 7, 8, 15;
+  --primary-color: #8b0000;
+  --primary-hover: #a9a9a9;
+  --secondary-color: #8b0000;
+  --accent-color: #8b0000;
+  --background-color: #000000;
+  --card-background: #121212;
+  --text-color: #ffffff;
+  --text-muted: #cccccc;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --highlight-color: rgba(139, 0, 0, 0.3);
+  --shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  --hover-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --background-color-rgb: 0, 0, 0;
 }
-
-/* ...the rest of your CSS remains unchanged... */
 
 * {
   box-sizing: border-box;
