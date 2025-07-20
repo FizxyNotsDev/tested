@@ -23,7 +23,7 @@
           "name": "LuminAI",
           "desc": "Talk with luminai - Advanced AI assistant",
           "path": "/ai/luminai?text=",
-          "status": "maintenance",
+          "status": "error",
           "params": {
             "text": "Text for luminai to respond to"
           }
