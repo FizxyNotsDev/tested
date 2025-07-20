@@ -1,11 +1,11 @@
 :root {
-  /* Color Palette - Purple Gradient Theme */
-  --primary-color: #6c5ce7;
-  --primary-hover: #5649d1;
-  --secondary-color: #a29bfe;
-  --accent-color: #00cec9;
-  --success-color: #00b894;
-  --error-color: #ff7675;
+  /* Color Palette - FieX Logo Gradient Theme */
+  --primary-color: #13c0ff;         /* FieX blue */
+  --primary-hover: #6f38fd;         /* FieX purple */
+  --secondary-color: #6f38fd;       /* FieX purple */
+  --accent-color: #fc2eb4;          /* FieX pink */
+  --success-color: #13c0ff;         /* Use blue for status */
+  --error-color: #fc2eb4;           /* Use pink for error */
   --warning-color: #fdcb6e;
 
   /* Light Mode */
