@@ -8,17 +8,18 @@
   --error-color: #fc2eb4;           /* Use pink for error */
   --warning-color: #fdcb6e;
 
-  /* Light Mode */
-  --background-color: #11121a;      /* Almost black, matches app background */
-  --card-background: #181929;       /* Slightly lighter than main bg */
-  --text-color: #f5f6fa;            /* Off-white */
+  /* Light Mode (fix: gunakan warna terang) */
+  --background-color: #f9fbff;          /* Putih kebiruan */
+  --card-background: #ffffff;           /* Putih */
+  --text-color: #2c3e50;                /* Abu tua */
   --text-muted: #7f8c8d;
   --border-color: rgba(19, 192, 255, 0.08);
-  --highlight-color: rgba(19, 192, 255, 0.14); /* Subtle blue for highlights */
+  --highlight-color: rgba(19, 192, 255, 0.08);
   --shadow: 0 4px 12px rgba(19, 192, 255, 0.08);
   --hover-shadow: 0 6px 20px rgba(19, 192, 255, 0.12);
   --card-shadow: 0 2px 8px rgba(19, 192, 255, 0.05);
-  --background-color-rgb: 17, 18, 26;
+  --background-color-rgb: 249, 251, 255;
+}
 
   /* UI Elements */
   --border-radius-sm: 8px;
