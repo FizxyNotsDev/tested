@@ -77,93 +77,39 @@
          <h5 class="copyright-text">© 2025 Raol Api'S Corp. All rights reserved.</h5>
        </div>
 
-    <!-- Sidebar navigation -->
-    <nav class="side-nav">
-      <a href="#Home" class="side-nav-link active"><i class="fas fa-home"></i><span>Home</span></a>
-      <a href="#APIStatus" class="side-nav-link"><i class="fas fa-signal"></i><span>Status</span></a>
-      <a href="#APIs" class="side-nav-link"><i class="fas fa-plug"></i><span>APIs</span></a>
-      <a href="https://github.com/raolbyte" class="side-nav-link"><i class="fab fa-github"></i><span>GitHub</span></a>
+<!-- Sidebar Navigation -->
+<aside class="side-nav" id="sideNavigation" aria-label="Main Navigation">
+  <div class="side-nav-logo">
+    <span id="sideNavName">API</span>
+    <div id="versionHeader" class="badge-pill">v1.0</div>
+  </div>
+
+  <!-- Menu Utama -->
+  <div class="side-nav-section">
+    <h6 class="text-uppercase fw-bold mb-2 ps-4" style="color: rgba(108,117,125,1);">Menu Utama</h6>
+    <nav class="side-nav-links ps-4" aria-label="Navigation Links">
+      <a href="#Home" class="side-nav-link active" aria-current="page">
+        <i class="fas fa-home" aria-hidden="true"></i>
+        <span>Home</span>
+      </a>
+      <a href="#APIs" class="side-nav-link">
+        <i class="fas fa-plug" aria-hidden="true"></i>
+        <span>APIs</span>
+      </a>
     </nav>
+  </div>
 
-    <main>
-      <section id="Home" class="container py-5 text-center">
-        <h1 class="display-4 fw-bold">Raol Api'S</h1>
-        <p class="lead text-muted">Sistem dokumentasi modern dan antarmuka pengujian interaktif.<br />Jelajahi koleksi API kami yang powerful dengan mudah.</p>
-      </section>
-
-      <!-- API Status Section -->
-      <section id="APIStatus" class="container py-5">
-        <div class="text-center mb-4">
-          <h2 class="fw-bold">API Status</h2>
-          <p class="text-muted">Pantau status sistem secara real-time.</p>
-        </div>
-        <div class="row g-4 justify-content-center text-center">
-          <div class="col-md-3 col-sm-6">
-            <div class="card shadow-sm border-0 rounded-4 p-3">
-              <h6 class="text-muted">Status</h6>
-              <p id="statusText" class="fs-5 fw-bold text-success">Loading...</p>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6">
-            <div class="card shadow-sm border-0 rounded-4 p-3">
-              <h6 class="text-muted">Uptime</h6>
-              <p id="uptime" class="fs-5 fw-semibold">--:--:--</p>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6">
-            <div class="card shadow-sm border-0 rounded-4 p-3">
-              <h6 class="text-muted">Requests</h6>
-              <p id="requestCount" class="fs-5 fw-semibold">0</p>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6">
-            <div class="card shadow-sm border-0 rounded-4 p-3">
-              <h6 class="text-muted">Runtime</h6>
-              <p id="runtime" class="fs-5 fw-semibold">Loading...</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- APIs Section -->
-      <section id="APIs" class="container py-5">
-        <div class="text-center mb-4">
-          <h2 class="fw-bold">API Endpoints</h2>
-          <p class="text-muted">Jelajahi koleksi API kami yang lengkap dengan dokumentasi detail dan contoh penggunaan</p>
-        </div>
-      </section>
-    </main>
-
-    <!-- JS for API Status -->
-    <script>
-      async function loadApiStatus() {
-        try {
-          const res = await fetch("/api/status")
-          const data = await res.json()
-          document.getElementById("statusText").textContent = data.status || "Online"
-          document.getElementById("statusText").className = "fs-5 fw-bold " + (data.status === "Online" ? "text-success" : "text-danger")
-          document.getElementById("uptime").textContent = formatUptime(data.uptime)
-          document.getElementById("requestCount").textContent = data.totalRequest || "0"
-          document.getElementById("runtime").textContent = data.runtime || "Unknown"
-        } catch (error) {
-          document.getElementById("statusText").textContent = "Offline"
-          document.getElementById("statusText").className = "fs-5 fw-bold text-danger"
-          document.getElementById("uptime").textContent = "--:--:--"
-          document.getElementById("requestCount").textContent = "-"
-          document.getElementById("runtime").textContent = "-"
-        }
-      }
-
-      function formatUptime(ms) {
-        const sec = Math.floor(ms / 1000)
-        const h = String(Math.floor(sec / 3600)).padStart(2, '0')
-        const m = String(Math.floor((sec % 3600) / 60)).padStart(2, '0')
-        const s = String(sec % 60).padStart(2, '0')
-        return `${h}:${m}:${s}`
-      }
-
-      loadApiStatus()
-      setInterval(loadApiStatus, 10000)
+  <!-- Resources -->
+  <div class="side-nav-section mt-4">
+    <h6 class="text-uppercase fw-bold mb-2 ps-4" style="color: rgba(108,117,125,1);">Resources</h6>
+    <nav class="side-nav-links ps-4" aria-label="Resources Links">
+      <a href="https://github.com/FizxyNotsDev/FieX-API-s" target="_blank" class="side-nav-link">
+        <i class="fab fa-github" aria-hidden="true"></i>
+        <span>GitHub</span>
+      </a>
+    </nav>
+  </div>
+</aside>
     
     <div class="main-wrapper">
         <header class="main-header" role="banner">
@@ -188,6 +134,13 @@
                 </button>
             </div>
         </header>
+
+        <!-- MODIFIED: Tambah Status API di bawah header -->
+        <div id="apiStatusBox" class="alert alert-secondary d-flex align-items-center mb-3" style="max-width: 420px; gap: 8px; margin: 20px auto 0 24px;">
+            <i id="apiStatusIcon" class="fas fa-circle-notch fa-spin text-secondary"></i>
+            <span id="apiStatusText">Checking API status...</span>
+        </div>
+        <!-- END MODIFIED -->
         
         <main id="mainContent">
             <section id="Home" class="hero-section" aria-labelledby="heroHeading">
@@ -315,5 +268,35 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/script.js"></script>
+    <!-- MODIFIED: Script Status API -->
+    <script>
+      // MODIFIED: API status checker dengan total request
+      async function fetchApiStatus() {
+        const icon = document.getElementById('apiStatusIcon');
+        const text = document.getElementById('apiStatusText');
+        try {
+          const res = await fetch('/status');
+          if (!res.ok) throw new Error('API down');
+          const data = await res.json();
+          if (data.status === "online" || data.status === "UP" || data.status === true) {
+            let statusStr = `API Online • Uptime: ${data.uptime || "-"} • v${data.version || ""}`;
+            if (typeof data.totalRequest !== "undefined") {
+              statusStr += ` • Total Request: ${data.totalRequest}`;
+            }
+            icon.className = "fas fa-circle text-success";
+            text.textContent = statusStr;
+          } else {
+            icon.className = "fas fa-circle text-danger";
+            text.textContent = "API Offline";
+          }
+        } catch (e) {
+          icon.className = "fas fa-circle text-danger";
+          text.textContent = "API Offline";
+        }
+      }
+      fetchApiStatus();
+      setInterval(fetchApiStatus, 10000); // cek tiap 10 detik
+    </script>
+    <!-- END MODIFIED -->
 </body>
-                          </html>
+</html>
